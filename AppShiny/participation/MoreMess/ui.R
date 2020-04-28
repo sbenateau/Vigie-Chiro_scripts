@@ -2,12 +2,11 @@
 #authors: Jean-Fran?ois Julien and Yves Bas
 
 # ui.R pour TadaridaShinyVigie-Chiro
-library(dplyr)
-library(ggplot2)
 library(ggvis)
 library(shiny)
 library(data.table)
-library(lubridate)
+
+
 shinyUI(
   pageWithSidebar(
     # Application title
@@ -22,6 +21,8 @@ shinyUI(
                            accept = c("text/csv",
                                       "text/comma-separated-values,text/plain",
                                       ".csv")),
+                 textInput("wavdirChoice", "Entrer le chemin d'accès répertoire son"),
+                 actionButton("do", "Valider"),
                  uiOutput("paramschoix"),
                  uiOutput("idchoix"),
                  uiOutput("especechoix"),
@@ -48,7 +49,7 @@ shinyUI(
                                ggvisOutput("plot")),
                  shiny::column(11, offset = 1,
                                uiOutput("heures")),
-                 tableOutput("testIf")
+                 tableOutput("testStr")
                  # ,
                  #shiny::column(12,
                  #             sliderInput("frequence_mediane",
